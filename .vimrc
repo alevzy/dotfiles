@@ -36,20 +36,21 @@ let g:airline_symbols.linenr=' ln:'
 " lsp
 packadd lsp
 call LspAddServer([#{
+            \   name: 'pylsp',
+            \   filetype: 'python',
+            \   path: '/usr/bin/pylsp',
+            \   args: [],
+            \   }])
+call LspAddServer([#{
             \   name: 'clangd',
             \   filetype: ['c', 'cpp'],
             \   path: '/usr/bin/clangd',
             \   args: ['--background-index', '--clang-tidy']
             \   }])
-call LspAddServer([#{
-            \   name: 'pylsp',
-            \   filetype: 'python',
-            \   path: '/usr/bin/pylsp',
-            \   args: []
-            \   }])
 
 " maps
-let mapleader="\\"
+let mapleader=","
+let maplocalleader=","
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap _ ddkP
@@ -64,17 +65,25 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 
 augroup filetype_python
     autocmd!
-    autocmd FileType pytnon nnoremap <buffer> <leader>c I#<esc>
+    autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
     autocmd FileType python :iabbrev <buffer> iff if:<left>
 augroup END
 
 augroup filetype_cpp
     autocmd!
-    autocmd FileType cpp nnoremap <buffer> <leader>c I//<esc>
+    autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
     autocmd FileType cpp :iabbrev <buffer> iff if ()<left>
 augroup END
 
-
-nnoremap <F12> :LspGotoDefinition<cr>
-nnoremap <F2> :LspHover<cr>
-
+nnoremap <F2> :LspRename<cr>
+nnoremap <c-k>r :LspRename<cr>
+nnoremap <F3> :LspSymbolSearch<cr>
+nnoremap <c-k>s :LspSymbolSearch<cr>
+nnoremap <c-k>g :LspGotoDefinition<cr>
+nnoremap <c-k>p :LspPeekDefinition<cr>
+nnoremap <c-k>h :LspHover<cr>
+nnoremap <c-k>d :LspDiagCurrent<cr>
+nnoremap <c-k>n :LspDiagNext<cr>
+nnoremap <c-k>N :LspDiagPrev<cr>
+nnoremap <c-k>f :LspFormat<cr>
+nnoremap <c-k>o :LspOutline<cr>
