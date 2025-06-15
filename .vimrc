@@ -65,13 +65,13 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 
 augroup filetype_python
     autocmd!
-    autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+    autocmd FileType python nnoremap <buffer> <localleader>c I#<space><esc>
     autocmd FileType python :iabbrev <buffer> iff if:<left>
 augroup END
 
 augroup filetype_cpp
     autocmd!
-    autocmd FileType cpp nnoremap <buffer> <localleader>c I//<esc>
+    autocmd FileType cpp nnoremap <buffer> <localleader>c I//<space><esc>
     autocmd FileType cpp :iabbrev <buffer> iff if ()<left>
 augroup END
 
@@ -82,6 +82,7 @@ nnoremap <c-k>s :LspSymbolSearch<cr>
 nnoremap <c-k>g :LspGotoDefinition<cr>
 nnoremap <c-k>p :LspPeekDefinition<cr>
 nnoremap <c-k>h :LspHover<cr>
+nnoremap <c-k>a :LspDiagShow<cr>
 nnoremap <c-k>d :LspDiagCurrent<cr>
 nnoremap <c-k>n :LspDiagNext<cr>
 nnoremap <c-k>N :LspDiagPrev<cr>
