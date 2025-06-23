@@ -14,6 +14,11 @@ PLUGIN_LIST=(
     "$GITHUB:tpope/vim-fugitive.git" "$VIMPACK/tpope/start/fugitive" "fugitive/doc"
     "$GITHUB:preservim/nerdtree.git" "$VIMPACK/vendor/start/nerdtree" "$VIMPACK/vendor/start/nerdtree/doc"
     "$GITHUB:yegappan/lsp.git" "$VIMPACK/downloads/opt/lsp" "$VIMPACK/downloads/opt/lsp/doc"
+    "$GITHUB:junegunn/fzf.git" "$VIMPACK/junegunn/start/fzf" "$VIMPACK/junegunn/start/fzf/doc"
+    "$GITHUB:junegunn/fzf.vim.git" "$VIMPACK/junegunn/start/fzf.vim" "$VIMPACK/junegunn/start/fzf.vim/doc"
+    "$GITHUB:airblade/vim-gitgutter.git" "$VIMPACK/airblade/start/vim-gitgutter" "$VIMPACK/airblade/start/vim-gitgutter/doc"
+    "$GITHUB:preservim/nerdcommenter.git" "$VIMPACK/vendor/start/nerdcommenter" "$VIMPACK/vendor/start/nerdcommenter/doc"
+    "$GITHUB:preservim/tagbar.git" "$VIMPACK/vendor/start/tagbar" "$VIMPACK/vendor/start/tagbar/doc"
 )
 COUNT=${#PLUGIN_LIST[@]}
 for (( i=0; i<COUNT; i+=3))

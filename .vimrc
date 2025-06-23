@@ -47,14 +47,18 @@ call LspAddServer([#{
             \   path: '/usr/bin/clangd',
             \   args: ['--background-index', '--clang-tidy']
             \   }])
+call LspOptionsSet(#{
+            \   noNewlineInCompletion: v:true,
+            \   outlineWinSize: 40,
+            \   semanticHighlight: v:true,
+            \   showDiagWithVirtualText: v:true,
+            \   })
 
 " maps
 let mapleader=","
 let maplocalleader=","
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap _ ddkP
-nnoremap - ddp
 inoremap <c-u> <esc>vawU<esc>ei
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 
@@ -63,28 +67,62 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap il{ :<c-u>normal! F}vi{<cr>
 
-augroup filetype_python
-    autocmd!
-    autocmd FileType python nnoremap <buffer> <localleader>c I#<space><esc>
-    autocmd FileType python :iabbrev <buffer> iff if:<left>
-augroup END
+" fzf commands
+nnoremap <localleader>ff :Files<cr>
+nnoremap <localleader>fb :Buffers<cr>
+nnoremap <localleader>fg :GFiles<cr>
+nnoremap <localleader>fl :Lines<cr>
+nnoremap <localleader>fj :Jumps<cr>
+nnoremap <localleader>fm :Maps<cr>
 
-augroup filetype_cpp
-    autocmd!
-    autocmd FileType cpp nnoremap <buffer> <localleader>c I//<space><esc>
-    autocmd FileType cpp :iabbrev <buffer> iff if ()<left>
-augroup END
-
-nnoremap <F2> :LspRename<cr>
+" lsp commands
 nnoremap <c-k>r :LspRename<cr>
-nnoremap <F3> :LspSymbolSearch<cr>
 nnoremap <c-k>s :LspSymbolSearch<cr>
 nnoremap <c-k>g :LspGotoDefinition<cr>
-nnoremap <c-k>p :LspPeekDefinition<cr>
+nnoremap <c-k>pd :LspPeekDefinition<cr>
+nnoremap <c-k>pr :LspPeerReferences<cr>
 nnoremap <c-k>h :LspHover<cr>
-nnoremap <c-k>a :LspDiagShow<cr>
-nnoremap <c-k>d :LspDiagCurrent<cr>
-nnoremap <c-k>n :LspDiagNext<cr>
-nnoremap <c-k>N :LspDiagPrev<cr>
+nnoremap <c-k>ds :LspDiagShow<cr>
+nnoremap <c-k>dc :LspDiagCurrent<cr>
+nnoremap <c-k>dn :LspDiagNext<cr>
+nnoremap <c-k>dp :LspDiagPrev<cr>
 nnoremap <c-k>f :LspFormat<cr>
 nnoremap <c-k>o :LspOutline<cr>
+
+" git-gutter
+" <leader>hs -- stage hunk
+" <leader>hu -- undo hunk
+" <leader>hp -- preview hunk
+set updatetime=500
+nnoremap <localleader>hh :GitGutterLineHighlightsToggle<cr>
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap ]h <Plug>(GitGutterNextHunk)
+
+" NERD Tree
+nnoremap <localleader>to :NERDTree<cr>
+nnoremap <localleader>tc :NERDTreeClose<cr>
+nnoremap <localleader>tt :NERDTreeToggle<cr>
+
+" NERD Commenter
+" <leader>cc -- comment line or selected
+" <leader>cn -- same, but force nesting
+" <leader>c<space> -- toggle comment state
+" <leader>cm -- comment with multipart delimiters
+" <leader>ci -- toggle comment state? (clarify)
+" <leader>cs -- comment lines with pretty formatting
+" <leader>cy -- yank lines + cc
+" <leader>c$ -- comment from cursor to eol
+" <leader>cA -- append comment to eol
+" <leader>ca -- alter delimiters type
+" <leader>cu -- uncomment
+" <leader>cl -- cc + align left
+" <leader>cb -- cc + align both
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDToggleCheckAllLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+
+" Tagbar
+nnoremap <localleader>b :TagbarToggle<cr>
