@@ -2,7 +2,7 @@
 
 # make symlinks
 ln -sf $PWD/.vimrc $HOME/.vimrc
-ln -sf $PWD/.zshrc $HOME/.zshrc
+ln -sf $PWD/.tigrc $HOME/.tigrc
 
 # get vim plugins
 VIMPACK=$HOME/.vim/pack
