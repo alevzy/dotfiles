@@ -3,6 +3,7 @@
 # make symlinks
 ln -sf $PWD/.vimrc $HOME/.vimrc
 ln -sf $PWD/.tigrc $HOME/.tigrc
+ln -sf $PWD/.zshrc $HOME/.zshrc
 
 # get vim plugins
 VIMPACK=$HOME/.vim/pack
@@ -26,9 +27,6 @@ do
     SRC=${PLUGIN_LIST[*]:$i:1}
     DST=${PLUGIN_LIST[*]:$i+1:1}
     HLP=${PLUGIN_LIST[*]:$i+2:1}
-    echo src is $SRC
-    echo dst is $DST
-    echo hlp is $HLP
     if [[ ! -d "$DST" ]]; then
         echo "Installing plugin from $SRC"
         git clone --depth=1 $SRC $DST
