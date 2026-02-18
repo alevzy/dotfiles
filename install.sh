@@ -23,9 +23,12 @@ PLUGIN_LIST=(
 COUNT=${#PLUGIN_LIST[@]}
 for (( i=0; i<COUNT; i+=3))
 do
-    SRC=${PLUGIN_LIST[i+0]}
-    DST=${PLUGIN_LIST[i+1]}
-    HLP=${PLUGIN_LIST[i+2]}
+    SRC=${PLUGIN_LIST[*]:$i:1}
+    DST=${PLUGIN_LIST[*]:$i+1:1}
+    HLP=${PLUGIN_LIST[*]:$i+2:1}
+    echo src is $SRC
+    echo dst is $DST
+    echo hlp is $HLP
     if [[ ! -d "$DST" ]]; then
         echo "Installing plugin from $SRC"
         git clone --depth=1 $SRC $DST
@@ -34,4 +37,13 @@ do
         echo "Plugin $SRC is already installed"
     fi
 done
+
+POWERLEVEL_DIR=$HOME/.powerlevel10k
+POWERLEVEL_GIT=$GITHUB:romkatv/powerlevel10k.git
+if [[ ! -d "$POWERLEVEL_DIR" ]]; then
+    echo "Installing powerlevel10k from $POWERLEVEL_GIT"
+    git clone --depth=1 $POWERLEVEL_GIT $POWERLEVEL_DIR
+else
+    echo "Powerlevel10k is already installed"
+fi
 
