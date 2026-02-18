@@ -13,12 +13,12 @@ set expandtab
 set incsearch
 set hlsearch
 
+set t_u7=
+set encoding=utf8
+
 set list
 set listchars=tab:--,trail:.,extends:>,precedes:<
 set lcs+=space:·
-
-set t_u7=
-set encoding=utf8
 
 " gruvbox
 colorscheme gruvbox
