@@ -20,6 +20,15 @@ set list
 set listchars=tab:--,trail:.,extends:>,precedes:<
 set lcs+=space:·
 
+" Alternative codes:
+"  1 -> blinking block
+"  2 -> solid block 
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
+autocmd VimLeave * silent !echo -ne "\e[0 q"
+
 " gruvbox
 colorscheme gruvbox
 set background=dark
