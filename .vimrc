@@ -59,8 +59,7 @@ call LspAddServer([#{
 call LspOptionsSet(#{
             \   noNewlineInCompletion: v:true,
             \   outlineWinSize: 40,
-            \   semanticHighlight: v:true,
-            \   showDiagWithVirtualText: v:true,
+            \   showDiagWithVirtualText: v:false,
             \   })
 
 " maps
