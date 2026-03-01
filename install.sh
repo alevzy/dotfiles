@@ -5,6 +5,7 @@ ln -sf $PWD/.vimrc $HOME/.vimrc
 ln -sf $PWD/.tigrc $HOME/.tigrc
 ln -sf $PWD/.zshrc $HOME/.zshrc
 ln -sf $PWD/.p10k.zsh $HOME/.p10k.zsh
+ln -sf $PWD/.tmux.conf $HOME/.tmux.conf
 
 # get vim plugins
 VIMPACK=$HOME/.vim/pack
@@ -44,5 +45,15 @@ if [[ ! -d "$POWERLEVEL_DIR" ]]; then
     git clone --depth=1 $POWERLEVEL_GIT $POWERLEVEL_DIR
 else
     echo "Powerlevel10k is already installed"
+fi
+
+TMUX_PLUGIN_DIR=$HOME/.tmuxplugins
+mkdir -p $TMUX_PLUGIN_DIR
+TMUX_THEME_GIT=$GITHUB/catppuccin/tmux.git
+if [[ ! -d "$TMUX_PLUGIN_DIR/catppuccin" ]]; then
+    echo "Installing catppuccin theme for tmux from $TMUX_THEME_GIT"
+    git clone --depth=1 -b v2.1.3 $TMUX_THEME_GIT $TMUX_PLUGIN_DIR/catppuccin
+else
+    echo "catppuccin theme for tmux is already installed"
 fi
 
