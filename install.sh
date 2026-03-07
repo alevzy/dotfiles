@@ -38,14 +38,17 @@ do
     fi
 done
 
-POWERLEVEL_DIR=$HOME/.powerlevel10k
-POWERLEVEL_GIT=$GITHUB/romkatv/powerlevel10k.git
-if [[ ! -d "$POWERLEVEL_DIR" ]]; then
-    echo "Installing powerlevel10k from $POWERLEVEL_GIT"
-    git clone --depth=1 $POWERLEVEL_GIT $POWERLEVEL_DIR
-else
-    echo "Powerlevel10k is already installed"
-fi
+install_zsh_plugin() {
+    if [[ ! -d "$2" ]]; then
+        echo "Installing plugin from $1"
+        git clone --depth=1 $1 $2
+    else
+        echo "Plugin from $1 is already installed"
+    fi
+}
+
+install_zsh_plugin "$GITHUB/romkatv/powerlevel10k.git" "$HOME/.powerlevel10k"
+install_zsh_plugin "$GITHUB/jeffreytse/zsh-vi-mode.git" "$HOME/.zsh-vi-mode"
 
 TMUX_PLUGIN_DIR=$HOME/.tmuxplugins
 mkdir -p $TMUX_PLUGIN_DIR

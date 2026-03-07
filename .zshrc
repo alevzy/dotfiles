@@ -95,3 +95,8 @@ ZSH_HIGHLIGHT_STYLES[cursor]='standout'
 
 # zsh-syntax-highlighting activation
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh-vi-mode
+source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
+ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
